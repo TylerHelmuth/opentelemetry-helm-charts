@@ -58,7 +58,7 @@ jobs:
         run: |
           git clone https://github.com/open-telemetry/opentelemetry-operator.git
           grep --help
-          cat ./charts/opentelemetry-operator/Chart.yaml | grep -oP appVersion
+          cat ./charts/opentelemetry-operator/Chart.yaml | grep -oP appVersion:\s*\d
           git checkout tags/v0.43.0 -b matching-chart-version
           ls -la
         # if: steps.list-changed.outputs.operator-changed == 'true'
