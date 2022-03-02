@@ -57,7 +57,8 @@ jobs:
       - name: Run KUTTL smoke tests
         run: |
           git clone https://github.com/open-telemetry/opentelemetry-operator.git
-          cat ./charts/opentelemetry-operator/Chart.yaml | grep -Po (?<=appVersion:\s*)\d+\.\d+\.\d+
+          grep --help
+          cat ./charts/opentelemetry-operator/Chart.yaml | grep -Po appVersion:\s*(\d+\.\d+\.\d+)
           git checkout tags/v0.43.0 -b matching-chart-version
           ls -la
         # if: steps.list-changed.outputs.operator-changed == 'true'
