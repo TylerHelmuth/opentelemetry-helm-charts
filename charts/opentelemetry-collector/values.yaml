@@ -139,23 +139,6 @@ affinity: {}
 # Can be overridden here or for agentCollector and standaloneCollector independently.
 priorityClassName: ""
 
-secretMounts:
-  - name: secret
-    mountPath: /etc/
-    readOnly: true
-
-extraConfigMapMounts:
-  - name: testing
-    mountPath: /etc/
-    configMap:
-      name: testing
-
-extraHostPathMounts:
-  - name: audit-log
-    mountPath: /etc/
-    hostPath:
-      path: /var/log/kubernetes/apiserver
-
 extraEnvs: []
 extraVolumes: []
 extraVolumeMounts: []

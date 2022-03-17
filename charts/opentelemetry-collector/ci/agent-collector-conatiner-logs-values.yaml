@@ -1,3 +1,20 @@
+secretMounts:
+  - name: secret
+    mountPath: /etc/
+    readOnly: true
+
+extraConfigMapMounts:
+  - name: testing
+    mountPath: /etc/
+    configMap:
+      name: testing
+
+extraHostPathMounts:
+  - name: audit-log
+    mountPath: /etc/
+    hostPath:
+      path: /var/log/kubernetes/apiserver
+
 agentCollector:
   enabled: true
   containerLogs:
