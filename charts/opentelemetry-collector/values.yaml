@@ -146,11 +146,13 @@ secretMounts:
 
 extraConfigMapMounts:
   - name: testing
+    mountPath: /etc/
     configMap:
       name: testing
 
 extraHostPathMounts:
   - name: audit-log
+    mountPath: /etc/
     hostPath:
       path: /var/log/kubernetes/apiserver
 
