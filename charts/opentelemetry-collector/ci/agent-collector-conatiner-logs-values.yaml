@@ -1,17 +1,17 @@
 secretMounts:
   - name: secret
-    mountPath: /etc/
+    mountPath: /etc/asdfasdf
     readOnly: true
 
 extraConfigMapMounts:
   - name: testing
-    mountPath: /etc/
+    mountPath: /etc/reqreqw
     configMap:
       name: testing
 
 extraHostPathMounts:
   - name: audit-log
-    mountPath: /etc/
+    mountPath: /etc/rtyurtyu
     hostPath:
       path: /var/log/kubernetes/apiserver
 
