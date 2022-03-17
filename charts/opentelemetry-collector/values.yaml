@@ -143,7 +143,7 @@ secretMounts:
   - name: secret
     mountPath: /etc/
     readOnly: true
-    
+
 extraConfigMapMounts:
   - name: testing
     configMap:
