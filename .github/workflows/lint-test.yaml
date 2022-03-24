@@ -41,6 +41,9 @@ jobs:
       - name: Run chart-testing (lint)
         run: ct lint --target-branch main
 
+      - name: check make version
+        run: make --version
+
       - name: Run make check-examples
         run: make check-examples
 
