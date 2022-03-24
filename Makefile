@@ -19,7 +19,7 @@ check-examples:
 	for chart_name in $(CHARTS); do \
 		export EXAMPLES_DIR=charts/$${chart_name}/examples; \
 		echo "$${EXAMPLES_DIR}"; \
-		export EXAMPLES=$$(find $${EXAMPLES_DIR} -type d -maxdepth 1 -mindepth 1 -exec basename {} \;); \
+		export EXAMPLES=$$(find charts/$${chart_name}/examples -type d -maxdepth 1 -mindepth 1 -exec basename {} \;); \
 		echo "$${EXAMPLES}"; \
 	done
 
