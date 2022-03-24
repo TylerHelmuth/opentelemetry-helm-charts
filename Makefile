@@ -19,8 +19,8 @@ check-examples:
 	for chart_name in $(CHARTS); do \
 		export EXAMPLES_DIR=charts/$${chart_name}/examples; \
 		echo "$${EXAMPLES_DIR}"; \
-		export EXAMPLES=$$(find charts/opentelemetry-collector/examples -type d -maxdepth 1 -mindepth 1 -exec basename \{\} \;); \
-		echo "$${EXAMPLES}"; \
+		EXAMPLESSSS=$$(find charts/opentelemetry-collector/examples -type d -maxdepth 1 -mindepth 1 -exec basename \{\} \;) ; \
+		echo "$${EXAMPLESSSS}"; \
 	done
 
 
