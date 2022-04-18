@@ -53,8 +53,6 @@ jobs:
           kubectl wait --timeout=5m --for=condition=available deployment cert-manager-webhook -n cert-manager
         if: steps.list-changed.outputs.operator-changed == 'true'
 
-      - name: Run chart-testing (install)
-        run: ct install --target-branch main
 
       - name: Run daemonset and deployment install test
         run: |
@@ -63,8 +61,8 @@ jobs:
           kubectl get all -n test-both
           sleep 60
           kubectl get all -n test-both
-          kubectl rollout status deployment example-opentelemetry-collector --timeout=60s
-          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=60s
+          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=2m
+          kubectl rollout status deployment example-opentelemetry-collector --timeout=2m
           kubectl delete namespace testing-both
 
       - name: Run KUTTL smoke tests
