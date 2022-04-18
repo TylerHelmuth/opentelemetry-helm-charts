@@ -21,8 +21,8 @@ data:
       batch: {}
       memory_limiter:
         check_interval: 5s
-        limit_mib: 3276
-        spike_limit_mib: 1024
+        limit_mib: 156
+        spike_limit_mib: 48
     receivers:
       jaeger:
         protocols:
