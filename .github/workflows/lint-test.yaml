@@ -58,8 +58,11 @@ jobs:
 
       - name: Run daemonset and deployment install test
         run: |
-          kubectl apply -f ./charts/opentelemetry-collector/examples/daemonset-and-deployment/rendered -n testing-both --create-namespace
-          kubectl get all -n default
+          kubectl create namespace test-both
+          kubectl apply -f ./charts/opentelemetry-collector/examples/daemonset-and-deployment/rendered --namespace=test-both
+          kubectl get all -n test-both
+          sleep 60
+          kubectl get all -n test-both
           kubectl rollout status deployment example-opentelemetry-collector --timeout=60s
           kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=60s
           kubectl delete namespace testing-both
