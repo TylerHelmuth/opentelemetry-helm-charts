@@ -59,8 +59,9 @@ jobs:
       - name: Run daemonset and deployment install test
         run: |
           kubectl apply -f ./charts/opentelemetry-collector/examples/daemonset-and-deployment/rendered
-          kubectl rollout status deployment example-opentelemetry-collector --timeout=10s
-          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=10s
+          kubectl get all -n default
+          kubectl rollout status deployment example-opentelemetry-collector --timeout=60s
+          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=60s
 
       - name: Run KUTTL smoke tests
         run: |
