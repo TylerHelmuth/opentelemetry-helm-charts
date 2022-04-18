@@ -61,8 +61,10 @@ jobs:
           kubectl get all -n test-both
           sleep 60
           kubectl get all -n test-both
-          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=2m
-          kubectl rollout status deployment example-opentelemetry-collector --timeout=2m
+          sleep 60
+          kubectl get all -n test-both
+          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=2m -n test-both
+          kubectl rollout status deployment example-opentelemetry-collector --timeout=2m -n test-both
           kubectl delete namespace testing-both
 
       - name: Run KUTTL smoke tests
