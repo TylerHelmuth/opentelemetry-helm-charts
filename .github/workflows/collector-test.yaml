@@ -21,7 +21,7 @@ jobs:
         run: make check-examples
 
       - name: Run chart-testing (install)
-        run: ct install --target-branch main --charts opentelemetry-collector
+        run: ct install --charts charts/opentelemetry-collector
 
       - name: Run daemonset and deployment install test
         run: |

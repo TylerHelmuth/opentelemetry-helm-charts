@@ -24,7 +24,7 @@ jobs:
           kubectl wait --timeout=5m --for=condition=available deployment cert-manager-webhook -n cert-manager
 
       - name: Run chart-testing (install)
-        run: ct install --target-branch main --charts opentelemetry-operator
+        run: ct install --charts charts/opentelemetry-operator
 
       - name: Run KUTTL smoke tests
         run: |
