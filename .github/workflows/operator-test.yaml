@@ -11,26 +11,17 @@ jobs:
   operator-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Setup
         uses: ./.github/actions/setup
         with:
           create-kind-cluster: "true"
 
-      - name: Install cert-manager
-        run: |
-          kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.yaml
-          kubectl wait --timeout=5m --for=condition=available deployment cert-manager -n cert-manager
-          kubectl wait --timeout=5m --for=condition=available deployment cert-manager-webhook -n cert-manager
-
       - name: Run chart-testing (install)
         run: ct install --charts charts/opentelemetry-operator
-
-      - name: Run daemonset and deployment install test
-        run: |
-          kubectl apply -f ./charts/opentelemetry-collector/examples/daemonset-and-deployment/rendered
-          kubectl rollout status daemonset example-opentelemetry-collector-agent --timeout=30s
-          kubectl rollout status deployment example-opentelemetry-collector --timeout=30s
 
       - name: Run KUTTL smoke tests
         run: |
