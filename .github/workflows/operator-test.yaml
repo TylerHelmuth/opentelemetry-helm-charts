@@ -42,13 +42,13 @@ jobs:
           cd ./opentelemetry-operator/tests/e2e
           rm -r $(ls -A | grep -v autoscale)
 
-      - name: Use public target-allocator image in tests
-        run: |
-          LOCAL_TARGET_ALLOCATOR_IMG="local\/opentelemetry-operator-targetallocator:e2e"
-          PUBLIC_TARGET_ALLOCATOR_IMG="ghcr.io\/open-telemetry\/opentelemetry-operator\/target-allocator:0.1.0"
+      # - name: Use public target-allocator image in tests
+      #   run: |
+      #     LOCAL_TARGET_ALLOCATOR_IMG="local\/opentelemetry-operator-targetallocator:e2e"
+      #     PUBLIC_TARGET_ALLOCATOR_IMG="ghcr.io\/open-telemetry\/opentelemetry-operator\/target-allocator:0.1.0"
 
-          sed -i "s/$LOCAL_TARGET_ALLOCATOR_IMG/${PUBLIC_TARGET_ALLOCATOR_IMG}/g" ./opentelemetry-operator/tests/e2e/smoke-targetallocator/00-install.yaml
-          sed -i "s/$LOCAL_TARGET_ALLOCATOR_IMG/${PUBLIC_TARGET_ALLOCATOR_IMG}/g" ./opentelemetry-operator/tests/e2e/targetallocator-features/00-install.yaml
+      #     sed -i "s/$LOCAL_TARGET_ALLOCATOR_IMG/${PUBLIC_TARGET_ALLOCATOR_IMG}/g" ./opentelemetry-operator/tests/e2e/smoke-targetallocator/00-install.yaml
+      #     sed -i "s/$LOCAL_TARGET_ALLOCATOR_IMG/${PUBLIC_TARGET_ALLOCATOR_IMG}/g" ./opentelemetry-operator/tests/e2e/targetallocator-features/00-install.yaml
 
       - name: Install kuttl
         run: |
