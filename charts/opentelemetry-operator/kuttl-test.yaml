@@ -1,4 +1,4 @@
 apiVersion: kuttl.dev/v1beta1
 kind: TestSuite
 crdDir: ./charts/opentelemetry-operator/crds
-timeout: 150
+timeout: 300
