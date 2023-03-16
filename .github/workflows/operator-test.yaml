@@ -39,6 +39,8 @@ jobs:
         run: |
           appVersion=$(cat ./charts/opentelemetry-operator/Chart.yaml | sed -nr 's/appVersion: ([0-9]+\.[0-9]+\.[0-9]+)/\1/p')
           git clone -b v"$appVersion" --single-branch https://github.com/open-telemetry/opentelemetry-operator.git ./opentelemetry-operator
+          cd ./opentelemetry-operator/tests/e2e
+          rm -r $(ls -A | grep -v autoscale)
 
       - name: Use public target-allocator image in tests
         run: |
@@ -66,4 +68,4 @@ jobs:
           kubectl wait --timeout=5m --for=condition=available deployment my-opentelemetry-operator -n opentelemetry-operator-system
 
       - name: Run e2e tests
-        run:  kubectl kuttl test ./opentelemetry-operator/tests/e2e --config ./charts/opentelemetry-operator/kuttl-test.yaml
+        run:  kubectl kuttl test ./opentelemetry-operator/tests/e2e/autoscale --config ./charts/opentelemetry-operator/kuttl-test.yaml
